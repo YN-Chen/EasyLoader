@@ -2,7 +2,9 @@
 
 Loading states for SwiftUI in one line: a full-screen loader and a shimmering skeleton, with no dependencies.
 
-<!-- Add the demo GIF here: ![EasyLoader demo](Docs/demo.gif) -->
+<p align="center">
+  <img src="Docs/demo.gif" width="300" alt="EasyLoader demo showing a full-screen loader, a skeleton profile card and a skeleton message list">
+</p>
 
 ```swift
 NavigationStack { ... }
