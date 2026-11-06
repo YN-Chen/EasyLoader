@@ -5,7 +5,7 @@
 Loading states for SwiftUI in one line: a full-screen loader and a shimmering skeleton, with no dependencies.
 
 <p align="center">
-  <img src="Docs/demo.gif" width="300" alt="EasyLoader demo showing a full-screen loader, a skeleton profile card and a skeleton message list">
+  <img src="Docs/demo.png" width="300" alt="EasyLoader demo showing a full-screen loader, a skeleton profile card and a skeleton message list">
 </p>
 
 ```swift
@@ -174,8 +174,8 @@ Your views keep their `@State` when loading ends, and they can't be tapped while
 | `animation` | `.shimmer` | `.shimmer`, `.pulse`, `.none` |
 | `duration` | `1.5` | Seconds for one sweep or pulse |
 | `angle` | `.degrees(20)` | Tilt of the shimmer band |
-| `bandWidth` | `0.3` | `0.05` to `1`, as a fraction of the view's width |
-| `dimmedOpacity` | `0.4` | `0` to `1`, how faint placeholders are outside the band |
+| `bandWidth` | `0.7` | `0.05` to `1`, as a fraction of the view's width |
+| `dimmedOpacity` | `0.5` | `0` to `1`, how faint placeholders are outside the band |
 
 ## App-wide styles
 

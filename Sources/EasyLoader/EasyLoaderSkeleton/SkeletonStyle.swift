@@ -31,17 +31,17 @@ public struct SkeletonStyle: Sendable {
     public var duration: Double
     /// Tilt of the shimmer band. Default: `20°`.
     public var angle: Angle
-    /// Width of the band as a fraction of the view's width, from `0.05` to `1`. Default: `0.3`.
+    /// Width of the band as a fraction of the view's width, from `0.05` to `1`. Default: `0.7`.
     public var bandWidth: Double
-    /// How faint the placeholders are outside the band, from `0` to `1`. Default: `0.4`.
+    /// How faint the placeholders are outside the band, from `0` to `1`. Default: `0.5`.
     public var dimmedOpacity: Double
 
     public init(
         animation: SkeletonAnimation = .shimmer,
         duration: Double = 1.5,
         angle: Angle = .degrees(20),
-        bandWidth: Double = 0.3,
-        dimmedOpacity: Double = 0.4
+        bandWidth: Double = 0.7,
+        dimmedOpacity: Double = 0.5
     ) {
         self.animation = animation
         self.duration = duration

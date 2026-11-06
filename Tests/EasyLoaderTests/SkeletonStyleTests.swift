@@ -17,8 +17,14 @@ final class SkeletonStyleTests: XCTestCase {
         XCTAssertEqual(style.animation, .shimmer)
         XCTAssertEqual(style.duration, 1.5)
         XCTAssertEqual(style.angle, .degrees(20))
-        XCTAssertEqual(style.bandWidth, 0.3)
-        XCTAssertEqual(style.dimmedOpacity, 0.4)
+        XCTAssertEqual(style.bandWidth, 0.7)
+        XCTAssertEqual(style.dimmedOpacity, 0.5)
+    }
+
+    func testShimmerBandFadesOutAtItsEdges() {
+        XCTAssertEqual(ShimmerBand.bandStrength(at: 0), 0, accuracy: 0.0001)
+        XCTAssertEqual(ShimmerBand.bandStrength(at: 0.5), 1, accuracy: 0.0001)
+        XCTAssertEqual(ShimmerBand.bandStrength(at: 1), 0, accuracy: 0.0001)
     }
 
     func testPhaseComesFromTheClock() {
