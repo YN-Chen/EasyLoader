@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 /// How an SF Symbol or image indicator moves.
-public enum LoaderAnimation {
+public enum LoaderAnimation: Sendable {
     /// Spins continuously.
     case rotate
     /// Gently fades in and out. SF Symbols use Apple's native pulse effect.
@@ -19,7 +19,7 @@ public enum LoaderAnimation {
 }
 
 /// What is shown in the middle of the loader.
-public enum LoaderIndicator {
+public enum LoaderIndicator: Sendable {
     /// The standard system spinner.
     case system
     /// An SF Symbol, e.g. `"arrow.triangle.2.circlepath"`.
@@ -27,7 +27,7 @@ public enum LoaderIndicator {
     /// An image from your asset catalog (PNG, PDF or SVG).
     case image(Image, animation: LoaderAnimation = .rotate)
     /// Any view. Create with `.custom { }`.
-    case view(AnyView)
+    case view(@MainActor @Sendable () -> AnyView)
 
     /// Your own indicator view, for example a custom spinner or a Lottie animation.
     ///
@@ -35,9 +35,9 @@ public enum LoaderIndicator {
     /// .custom { MySpinner() }
     /// ```
     public static func custom<Content: View>(
-        @ViewBuilder _ content: () -> Content
+        @ViewBuilder _ content: @escaping @MainActor @Sendable () -> Content
     ) -> LoaderIndicator {
-        .view(AnyView(content()))
+        .view { AnyView(content()) }
     }
 }
 
@@ -90,8 +90,8 @@ struct LoaderIndicatorView: View {
                     .frame(width: imageSide, height: imageSide)
             }
 
-        case .view(let view):
-            view
+        case .view(let makeView):
+            makeView()
         }
     }
 }

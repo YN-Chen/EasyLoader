@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 /// What fills the screen behind the loader's indicator.
-public enum LoaderBackground {
+public enum LoaderBackground: Sendable {
     /// The system background. Follows light and dark mode automatically.
     case system
     /// A solid colour.
@@ -19,7 +19,7 @@ public enum LoaderBackground {
     /// A system blur material, e.g. `.ultraThinMaterial`.
     case material(Material)
     /// Any view. Create with `.custom { }`.
-    case view(AnyView)
+    case view(@MainActor @Sendable () -> AnyView)
 
     /// Any view as the background, for example a gradient.
     ///
@@ -29,9 +29,9 @@ public enum LoaderBackground {
     /// }
     /// ```
     public static func custom<Content: View>(
-        @ViewBuilder _ content: () -> Content
+        @ViewBuilder _ content: @escaping @MainActor @Sendable () -> Content
     ) -> LoaderBackground {
-        .view(AnyView(content()))
+        .view { AnyView(content()) }
     }
 }
 
@@ -57,8 +57,8 @@ struct LoaderBackgroundView: View {
                 .clipped()
         case .material(let material):
             Rectangle().fill(material)
-        case .view(let view):
-            view
+        case .view(let makeView):
+            makeView()
         }
     }
 }

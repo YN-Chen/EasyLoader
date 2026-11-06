@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 /// How a skeleton moves while loading.
-public enum SkeletonAnimation {
+public enum SkeletonAnimation: Sendable {
     /// A band of light sweeps across the placeholders.
     case shimmer
     /// The placeholders gently fade in and out.
@@ -24,7 +24,7 @@ public enum SkeletonAnimation {
 /// ```swift
 /// SkeletonStyle(duration: 2, angle: .degrees(0))
 /// ```
-public struct SkeletonStyle {
+public struct SkeletonStyle: Sendable {
     /// Default: `.shimmer`. With Reduce Motion on, `.shimmer` becomes `.pulse` automatically.
     public var animation: SkeletonAnimation
     /// Seconds for one sweep (or one pulse). Default: `1.5`.

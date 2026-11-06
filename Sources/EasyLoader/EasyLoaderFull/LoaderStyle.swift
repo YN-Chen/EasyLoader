@@ -14,7 +14,7 @@ import SwiftUI
 /// ```swift
 /// LoaderStyle(background: .color(.black), backgroundOpacity: 0.5)
 /// ```
-public struct LoaderStyle {
+public struct LoaderStyle: Sendable {
     /// What fills the screen behind the indicator. Default: `.system`, which follows light and dark mode.
     public var background: LoaderBackground
     /// Background opacity from `0` (fully transparent) to `1` (solid). Default: `1`.
