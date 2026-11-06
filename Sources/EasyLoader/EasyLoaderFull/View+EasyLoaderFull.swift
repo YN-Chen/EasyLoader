@@ -11,7 +11,7 @@ import SwiftUI
 public extension View {
     /// Shows a full-screen loader over this view.
     ///
-    /// By default: white background and the standard system spinner.
+    /// By default: the system background and the standard system spinner.
     /// Apply it to the outermost view of a screen (e.g. the `NavigationStack`)
     /// so it covers the navigation bar too.
     ///

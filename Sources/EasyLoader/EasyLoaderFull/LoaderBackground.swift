@@ -10,6 +10,8 @@ import SwiftUI
 
 /// What fills the screen behind the loader's indicator.
 public enum LoaderBackground {
+    /// The system background. Follows light and dark mode automatically.
+    case system
     /// A solid colour.
     case color(Color)
     /// An image. `.fill` covers the screen (cropping if needed); `.fit` shows the whole image.
@@ -39,6 +41,8 @@ struct LoaderBackgroundView: View {
 
     var body: some View {
         switch background {
+        case .system:
+            Rectangle().fill(.background)
         case .color(let color):
             color
         case .image(let image, let contentMode):

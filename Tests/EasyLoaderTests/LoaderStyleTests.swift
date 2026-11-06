@@ -15,10 +15,9 @@ final class LoaderStyleTests: XCTestCase {
     func testDefaults() {
         let style = LoaderStyle.default
 
-        guard case .color(let color) = style.background else {
-            return XCTFail("Default background should be a colour")
+        guard case .system = style.background else {
+            return XCTFail("Default background should be the system background")
         }
-        XCTAssertEqual(color, .white)
 
         guard case .system = style.indicator else {
             return XCTFail("Default indicator should be the system spinner")

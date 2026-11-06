@@ -15,7 +15,7 @@ import SwiftUI
 /// LoaderStyle(background: .color(.black), backgroundOpacity: 0.5)
 /// ```
 public struct LoaderStyle {
-    /// What fills the screen behind the indicator. Default: `.color(.white)`.
+    /// What fills the screen behind the indicator. Default: `.system`, which follows light and dark mode.
     public var background: LoaderBackground
     /// Background opacity from `0` (fully transparent) to `1` (solid). Default: `1`.
     public var backgroundOpacity: Double
@@ -33,7 +33,7 @@ public struct LoaderStyle {
     public var messageFont: Font
 
     public init(
-        background: LoaderBackground = .color(.white),
+        background: LoaderBackground = .system,
         backgroundOpacity: Double = 1.0,
         indicator: LoaderIndicator = .system,
         indicatorTint: Color? = nil,
@@ -50,7 +50,7 @@ public struct LoaderStyle {
         self.messageFont = messageFont
     }
 
-    /// White, fully opaque background with the standard system spinner.
+    /// Fully opaque system background with the standard system spinner.
     public static var `default`: LoaderStyle { LoaderStyle() }
 
     /// Opacity kept between 0 and 1, even if a caller sets something out of range.
