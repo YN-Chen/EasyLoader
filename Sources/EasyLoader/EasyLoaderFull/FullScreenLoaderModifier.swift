@@ -18,6 +18,12 @@ struct FullScreenLoaderModifier: ViewModifier {
     /// An indicator passed directly on this call; it wins over the style's indicator.
     let indicatorOverride: AnyView?
 
+    /// What VoiceOver reads: the message, or "Loading" if there's no text to read.
+    var accessibilityMessage: String {
+        guard let message, !message.isEmpty else { return "Loading" }
+        return message
+    }
+
     func body(content: Content) -> some View {
         // A per-call style wins; otherwise use the app-wide or section style.
         let resolved = style ?? environmentStyle
@@ -48,7 +54,7 @@ struct FullScreenLoaderModifier: ViewModifier {
                     .contentShape(Rectangle())              // blocks taps to the content underneath
                     .ignoresSafeArea()                      // covers the status bar and home indicator areas
                     .accessibilityElement(children: .ignore)
-                    .accessibilityLabel(Text(message ?? "Loading"))
+                    .accessibilityLabel(Text(accessibilityMessage))
                     .accessibilityAddTraits(.isModal)       // VoiceOver stays on the loader
                     .transition(.opacity)
                 }

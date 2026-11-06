@@ -66,6 +66,21 @@ final class LoaderStyleTests: XCTestCase {
         XCTAssertEqual(points, points.sorted())
     }
 
+    func testVoiceOverFallsBackToLoading() {
+        func spokenText(for message: String?) -> String {
+            FullScreenLoaderModifier(
+                isPresented: true,
+                message: message,
+                style: nil,
+                indicatorOverride: nil
+            ).accessibilityMessage
+        }
+
+        XCTAssertEqual(spokenText(for: "Saving…"), "Saving…")
+        XCTAssertEqual(spokenText(for: nil), "Loading")
+        XCTAssertEqual(spokenText(for: ""), "Loading")
+    }
+
     func testOpacityIsClamped() {
         XCTAssertEqual(LoaderStyle(backgroundOpacity: 1.5).clampedOpacity, 1)
         XCTAssertEqual(LoaderStyle(backgroundOpacity: -0.2).clampedOpacity, 0)
