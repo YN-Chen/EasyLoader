@@ -1,5 +1,7 @@
 # EasyLoader
 
+[![CI](https://github.com/YN-Chen/EasyLoader/actions/workflows/ci.yml/badge.svg)](https://github.com/YN-Chen/EasyLoader/actions/workflows/ci.yml)
+
 Loading states for SwiftUI in one line: a full-screen loader and a shimmering skeleton, with no dependencies.
 
 <p align="center">
